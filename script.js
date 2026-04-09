@@ -1,5 +1,5 @@
 
-const OPENWEATHER_API_KEY = "YOUR_OPENWEATHER_API_KEY";
+const OPENWEATHER_API_KEY = "a0dfcccdb7552f08b9c93d6845c0848c";
 
 const selectors = {
   cityInput: document.getElementById("city-input"),
