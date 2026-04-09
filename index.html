@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherSphere - Live Forecast</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <video
+      class="bg-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    >
+      <source src="8451-209292190_small.mp4" type="video/mp4" />
+    </video>
+    <div class="video-overlay" aria-hidden="true"></div>
+
+    <main class="app">
+      <header class="app-header">
+        <div class="brand">
+          <div class="logo-orb"></div>
+          <div>
+            <h1 class="app-title" data-i18n="app_title">WeatherSphere</h1>
+            <p class="app-subtitle" data-i18n="app_subtitle">
+              Live forecast, air &amp; earth in motion
+            </p>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="search-group">
+            <input
+              type="text"
+              id="city-input"
+              placeholder="Search city"
+              aria-label="City name"
+            />
+            <button id="search-btn" class="btn primary" data-i18n="search">
+              Search
+            </button>
+            <button
+              id="location-btn"
+              class="btn ghost"
+              title="Use your live location"
+              data-i18n="use_location"
+            >
+              Use Live Location
+            </button>
+          </div>
+
+          <div class="language-group">
+            <label for="language-select" data-i18n="language_label">
+              Language
+            </label>
+            <select id="language-select">
+             
+              <option value="en" data-i18n="lang_en">English</option>
+              <option value="hi" data-i18n="lang_hi">Hindi</option>
+             
+            </select>
+            <small class="language-hint" data-i18n="language_hint">
+              Weather descriptions use your selected language; UI auto-falls back
+              to English.
+            </small>
+          </div>
+        </div>
+      </header>
+
+      <section class="status-bar" aria-live="polite">
+        <span id="status-text"></span>
+      </section>
+
+      <section class="grid">
+        <section class="card current-weather" aria-label="Current weather">
+          <div class="card-header">
+            <h2 data-i18n="current_conditions">Current Conditions</h2>
+            <span id="current-location" class="pill location-pill">—</span>
+          </div>
+          <div class="current-main">
+            <div class="temp-block">
+              <span id="current-temp" class="temp-value">--°</span>
+              <span id="current-feels" class="temp-feels">--</span>
+            </div>
+            <div class="condition-block">
+              <div class="condition-primary">
+                <img
+                  id="current-icon"
+                  alt="Weather icon"
+                  class="weather-icon"
+                />
+                <span id="current-desc" class="condition-text">—</span>
+              </div>
+              <div class="meta">
+                <span id="current-datetime">—</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="card metrics-card"
+          aria-label="Air, wind, humidity and precipitation"
+        >
+         
+          <div class="metrics-grid">
+            <div class="metric">
+              <span class="metric-label" data-i18n="wind_speed">Wind speed</span>
+              <span id="wind-speed" class="metric-value">--</span>
+              <span class="metric-unit">km/h</span>
+            </div>
+            <div class="metric">
+              <span class="metric-label" data-i18n="humidity">Humidity</span>
+              <span id="humidity" class="metric-value">--</span>
+              <span class="metric-unit">%</span>
+            </div>
+            <div class="metric">
+              <span class="metric-label" data-i18n="aqi">Air Quality (AQI)</span>
+              <span id="aqi" class="metric-value">--</span>
+              <span id="aqi-label" class="metric-chip">—</span>
+            </div>
+            <div class="metric">
+              <span class="metric-label" data-i18n="precip">Precipitation</span>
+              <span id="precip" class="metric-value">--</span>
+              <span class="metric-unit">mm (next hour)</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card forecast-card" aria-label="7 day forecast">
+          <div class="card-header">
+            <h2 data-i18n="seven_day_outlook">7‑Day Outlook</h2>
+          </div>
+          <div id="forecast-list" class="forecast-list"></div>
+        </section>
+      </section>
+
+    </main>
+
+    <div class="background">
+      <div class="layer aurora"></div>
+      <div class="layer particles wind"></div>
+      <div class="layer particles rain"></div>
+      <div class="layer globe"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
